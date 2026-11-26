@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b35">
+  <title>کارخانه‌دار کوچک</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🏭 کارخانه‌دار کوچک</div>
+    <div class="player-score">⭐ امتیاز: <span id="totalScore">۰</span></div>
+  </header>
+
+  <main class="container">
+
+    <!-- صفحه اصلی -->
+    <section id="homeScreen" class="screen">
+      <div class="hero">
+        <div class="factory-art">🏭</div>
+        <div class="eyebrow">بازی آموزشی مطالعات اجتماعی</div>
+        <h1>کارخانه‌دار کوچک</h1>
+        <p>آماده‌ای یک کارخانه بسازی و راز تولید محصولات را کشف کنی؟</p>
+        <button class="primary-btn" onclick="showNameScreen(-1)">
+          شروع ماجراجویی 🚀
+        </button>
+      </div>
+
+      <h2>موضوع مورد علاقه‌ات را انتخاب کن</h2>
+
+      <div class="feature-grid">
+        <button class="feature" onclick="showNameScreen(0)">
+          🧱
+          <b>مواد اولیه</b>
+          <small>از طبیعت تا کارخانه</small>
+        </button>
+
+        <button class="feature" onclick="showNameScreen(1)">
+          ⚙️
+          <b>خط تولید</b>
+          <small>چطور کالا ساخته می‌شود؟</small>
+        </button>
+
+        <button class="feature" onclick="showNameScreen(3)">
+          🗺️
+          <b>صنعت ایران</b>
+          <small>کارخانه‌ها کجا هستند؟</small>
+        </button>
+      </div>
+    </section>
+
+    <!-- صفحه مشخصات دانش آموز -->
+    <section id="nameScreen" class="screen hidden">
+      <button class="back-btn" onclick="goHome()">← بازگشت</button>
+
+      <div class="result-card">
+        <div class="result-icon">👨‍🎓</div>
+        <h2>مشخصات کارخانه‌دار</h2>
+        <p>قبل از شروع بازی، نام و نام خانوادگی خودت را وارد کن.</p>
+
+        <form id="studentForm" onsubmit="submitPlayerInfo(event)">
+          <label for="firstName">نام</label>
+          <input
+            id="firstName"
+            type="text"
+            placeholder="مثلاً علی"
+            required
+            maxlength="40"
+            autocomplete="given-name"
+          >
+
+          <label for="lastName">نام خانوادگی</label>
+          <input
+            id="lastName"
+            type="text"
+            placeholder="مثلاً محمدی"
+            required
+            maxlength="50"
+            autocomplete="family-name"
+          >
+
+          <button type="submit" class="primary-btn">
+            ورود به بازی 🎮
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- انتخاب مراحل -->
+    <section id="stagesScreen" class="screen hidden">
+      <button class="back-btn" onclick="goHome()">← بازگشت</button>
+      <h2>انتخاب مرحله</h2>
+      <p class="muted">هر مرحله را انتخاب کن و دانش خودت را محک بزن.</p>
+      <div id="stageList" class="stage-list"></div>
+    </section>
+
+    <!-- صفحه بازی -->
+    <section id="gameScreen" class="screen hidden">
+      <div class="game-heading">
+        <button class="back-btn" onclick="showStages()">✕ خروج</button>
+        <span id="stageName"></span>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar"></div>
+      </div>
+
+      <div class="question-meta">
+        <span id="questionNumber"></span>
+        <span>⭐ <span id="roundScore">۰</span></span>
+      </div>
+
+      <div class="question-card">
+        <div id="questionIcon" class="question-icon">🤔</div>
+        <h2 id="questionText"></h2>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <button id="nextBtn" class="primary-btn hidden" onclick="nextQuestion()">
+          سؤال بعدی ←
+        </button>
+      </div>
+    </section>
+
+    <!-- نتیجه -->
+    <section id="resultScreen" class="screen hidden">
+      <div class="result-card">
+        <div class="result-icon">🏆</div>
+        <h2 id="resultTitle">آفرین کارخانه‌دار!</h2>
+        <p id="resultMessage"></p>
+
+        <div class="result-score">
+          ⭐ <span id="finalScore">۰</span>
+        </div>
+
+        <div id="studentReport"></div>
+        <p id="sendStatus"></p>
+
+        <button class="primary-btn" onclick="showStages()">
+          ادامه بازی
+        </button>
+
+        <button class="secondary-btn" onclick="goHome()">
+          صفحه اصلی
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>یاد بگیر، کشف کن، تولید کن! 🌱</footer>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
