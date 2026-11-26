@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  color: #f5f8ff;
+  background: #0c1529;
+  --panel: #172640;
+  --panel-light: #203552;
+  --muted: #a9bad1;
+  --yellow: #ffce58;
+  --blue: #54b7ff;
+  --green: #39d9ad;
+  --purple: #a58bff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% -20%, #24517c 0%, transparent 55%),
+    radial-gradient(circle at 5% 75%, #153b4d 0%, transparent 30%),
+    radial-gradient(circle at 95% 65%, #282653 0%, transparent 30%),
+    #0c1529;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .14;
+  background-image: radial-gradient(#9dc8ff 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px max(5%, calc((100% - 1100px)/2));
+  background: #101e34e8;
+  border-bottom: 1px solid #ffffff15;
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -.5px;
+}
+
+.player-score {
+  padding: 10px 17px;
+  border: 1px solid #ffce5850;
+  border-radius: 30px;
+  color: var(--yellow);
+  background: #ffce5812;
+  box-shadow: 0 0 25px #ffce5810;
+  font-weight: 800;
+}
+
+.container {
+  width: min(1050px, 92%);
+  margin: 35px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.screen {
+  animation: screenIn .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* صفحه اصلی */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 55px 20px 48px;
+  border: 1px solid #74c8ff35;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% 30%, #3374a655, transparent 45%),
+    linear-gradient(145deg, #203b5e, #142640 65%, #18213f);
+  box-shadow:
+    0 25px 70px #0005,
+    inset 0 1px #ffffff18;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #ffffff10;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: -90px;
+  right: -60px;
+}
+
+.hero::after {
+  bottom: -120px;
+  left: -60px;
+}
+
+.factory-art {
+  width: 170px;
+  height: 170px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  font-size: 92px;
+  border-radius: 45px;
+  background: linear-gradient(145deg, #ffffff1b, #ffffff05);
+  border: 1px solid #ffffff25;
+  box-shadow: 0 15px 40px #0004, inset 0 2px #ffffff20;
+  animation: factoryFloat 3s ease-in-out infinite;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--green);
+  font-weight: 800;
+  padding: 7px 15px;
+  border: 1px solid #39d9ad45;
+  background: #39d9ad12;
+  border-radius: 30px;
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  margin: 15px 0 8px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffffff, #a9dcff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: #c3d2e6;
+  line-height: 2;
+  max-width: 550px;
+  margin: 12px auto 24px;
+}
+
+/* دکمه‌ها */
+
+.primary-btn,
+.secondary-btn {
+  position: relative;
+  border: 0;
+  border-radius: 15px;
+  padding: 14px 25px;
+  font-size: 15px;
+  font-weight: 900;
+  transition: .25s ease;
+}
+
+.primary-btn {
+  color: #17243b;
+  background: linear-gradient(135deg, #ffe18a, #ffbd3e);
+  box-shadow: 0 6px 0 #b67a23, 0 12px 30px #ffce5830;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #b67a23, 0 16px 35px #ffce5840;
+}
+
+.primary-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #b67a23;
+}
+
+.secondary-btn {
+  color: white;
+  background: linear-gradient(135deg, #425a7a, #293d5d);
+  border: 1px solid #ffffff20;
+}
+
+.back-btn {
+  color: #d7e8ff;
+  border: 1px solid #ffffff22;
+  background: #ffffff0b;
+  border-radius: 12px;
+  padding: 10px 16px;
+  transition: .2s;
+}
+
+.back-btn:hover {
+  background: #54b7ff22;
+  border-color: var(--blue);
+}
+
+/* کارت‌های ویژگی */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.feature {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  font-size: 36px;
+  padding: 22px 12px;
+  border: 1px solid #ffffff16;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #203451, #14243c);
+  box-shadow: 0 12px 30px #0002;
+  transition: .25s;
+}
+
+.feature:hover {
+  transform: translateY(-6px);
+  border-color: #54b7ff70;
+}
+
+.feature b,
+.feature small {
+  display: block;
+}
+
+.feature b {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+.feature small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* انتخاب مراحل */
+
+#stagesScreen > h2 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.stage-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.stage-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 185px;
+  text-align: right;
+  color: white;
+  padding: 23px;
+  border-radius: 22px;
+  border: 1px solid #ffffff1c;
+  background: linear-gradient(140deg, #233e61, #172943);
+  box-shadow: 0 12px 30px #0003;
+  transition: .25s;
+}
+
+.stage-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: -35px;
+  bottom: -55px;
+  border-radius: 50%;
+  background: #54b7ff12;
+}
+
+.stage-card:not(:disabled):hover {
+  transform: translateY(-5px) scale(1.015);
+  border-color: var(--blue);
+  box-shadow: 0 18px 35px #0004, 0 0 25px #54b7ff15;
+}
+
+.stage-card:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  filter: grayscale(.5);
+}
+
+.stage-icon {
+  font-size: 42px;
+  margin-bottom: 5px;
+}
+
+.stage-card h3 {
+  font-size: 19px;
+  margin: 5px 0;
+}
+
+.stage-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* صفحه سؤال */
+
+.game-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 800;
+}
+
+.progress-track {
+  height: 12px;
+  background: #ffffff12;
+  border-radius: 30px;
+  margin: 24px 0 15px;
+  overflow: hidden;
+  border: 1px solid #ffffff10;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #39d9ad, #74e6c3);
+  box-shadow: 0 0 15px #39d9ad70;
+  transition: width .45s ease;
+}
+
+.question-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.question-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 5vw, 42px);
+  margin-top: 17px;
+  border: 1px solid #ffffff20;
+  border-radius: 27px;
+  background:
+    radial-gradient(circle at 50% 0%, #31578350, transparent 50%),
+    linear-gradient(145deg, #203653, #15243b);
+  box-shadow: 0 25px 60px #0004;
+}
+
+.question-icon {
+  width: 95px;
+  height: 95px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  font-size: 48px;
+  border-radius: 28px;
+  background: #ffffff10;
+  border: 1px solid #ffffff1b;
+  box-shadow: inset 0 1px #ffffff15;
+}
+
+.question-card h2 {
+  text-align: center;
+  font-size: clamp(19px, 4vw, 26px);
+  line-height: 2;
+  margin: 10px 0 25px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin: 25px 0;
+}
+
+.answer-btn {
+  min-height: 60px;
+  padding: 15px;
+  text-align: right;
+  color: #f4f8ff;
+  font-size: 15px;
+  font-weight: 700;
+  border: 1px solid #ffffff20;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ffffff12, #ffffff05);
+  transition: .2s;
+}
+
+.answer-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: var(--blue);
+  background: #54b7ff18;
+}
+
+.answer-btn:disabled {
+  cursor: default;
+}
+
+.answer-btn.correct {
+  color: #9af4d6;
+  border-color: var(--green);
+  background: #39d9ad20;
+  box-shadow: 0 0 20px #39d9ad15;
+}
+
+.answer-btn.wrong {
+  color: #ffb5b5;
+  border-color: #ff7777;
+  background: #ff77771a;
+}
+
+.feedback {
+  padding: 15px 18px;
+  margin: 17px 0;
+  border-radius: 15px;
+  line-height: 2;
+  font-weight: 600;
+}
+
+.feedback.good {
+  color: #8ef0c9;
+  background: #39d9ad16;
+  border: 1px solid #39d9ad50;
+}
+
+.feedback.bad {
+  color: #ffb2b2;
+  background: #ff777716;
+  border: 1px solid #ff777750;
+}
+
+/* نتیجه مرحله */
+
+.result-card {
+  text-align: center;
+  padding: 45px 20px;
+  border: 1px solid #ffce5840;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 0%, #ffce5820, transparent 50%),
+    linear-gradient(145deg, #223a5c, #17253f);
+  box-shadow: 0 25px 60px #0004;
+}
+
+.result-icon {
+  font-size: 85px;
+  animation: trophyFloat 2s ease-in-out infinite;
+}
+
+.result-score {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 18px;
+  border-radius: 20px;
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--yellow);
+  background: #ffce5815;
+  border: 1px solid #ffce5840;
+}
+
+.result-card p {
+  color: var(--muted);
+  line-height: 2;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #8194b0;
+  font-size: 13px;
+}
+
+/* انیمیشن‌ها */
+
+@keyframes factoryFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes trophyFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* موبایل و تبلت */
+
+@media (max-width: 650px) {
+  .topbar { padding: 13px 4%; }
+  .brand { font-size: 15px; }
+  .player-score { padding: 8px 11px; font-size: 13px; }
+  .container { width: 93%; margin: 22px auto; }
+  .hero { padding: 35px 15px; border-radius: 24px; }
+  .factory-art { width: 135px; height: 135px; font-size: 75px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature { padding: 15px; }
+  .stage-list, .answers { grid-template-columns: 1fr; }
+  .stage-card { min-height: 150px; }
+  .question-card { padding: 20px 15px; }
+  .question-icon { width: 75px; height: 75px; font-size: 39px; }
+  footer { padding: 15px; }
+}
